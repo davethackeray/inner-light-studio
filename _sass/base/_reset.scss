@@ -1,0 +1,78 @@
+@use '../abstracts/variables' as *;
+
+// Box sizing
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// HTML & Body
+html {
+  font-size: $font-size-base;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: 1rem;
+  line-height: $line-height-base;
+  color: $color-text;
+  background-color: $color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Links
+a {
+  color: $color-primary;
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover {
+    color: $color-primary-dark;
+    text-decoration: underline;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+// Lists
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Buttons
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+// Form elements
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+}
