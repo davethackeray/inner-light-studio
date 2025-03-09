@@ -1,4 +1,3 @@
-
 title: Inner Light Studio
 description: Art, Movement & Meditation Space
 baseurl: "/inner-light-studio"
@@ -22,12 +21,12 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Sass processing
-sass:
-  style: compressed
-  load_paths:
-    - _sass
-    - node_modules
+# Default layout
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
 # Exclude from processing
 exclude:
@@ -43,3 +42,5 @@ exclude:
   - src
   - .storybook
   - memory-bank
+  - _sass
+  - "*.scss"
