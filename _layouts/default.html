@@ -1,50 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ page.description | default: site.description }}">
-    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/app.css' | relative_url }}">
+    {% feed_meta %}
+    {% seo %}
 </head>
 <body>
-    <header>
-        <div class="wrapper">
-            <nav>
-                <a href="{{ '/' | relative_url }}" class="logo">{{ site.title }}</a>
-                <ul>
-                    <li><a href="{{ '/movement/' | relative_url }}" {% if page.url contains 'movement' %}class="active"{% endif %}>Movement</a></li>
-                    <li><a href="{{ '/art/' | relative_url }}" {% if page.url contains 'art' %}class="active"{% endif %}>Art</a></li>
-                    <li><a href="{{ '/spiritual/' | relative_url }}" {% if page.url contains 'spiritual' %}class="active"{% endif %}>Spiritual</a></li>
-                </ul>
-            </nav>
+    <header class="site-header">
+        <div class="container">
+            {% include header.html %}
         </div>
     </header>
 
     <main>
-        <div class="wrapper">
+        <div class="container">
             {{ content }}
         </div>
     </main>
 
-    <footer>
-        <div class="wrapper">
-            <div class="footer-content">
-                <div class="social">
-                    {% if site.social.instagram %}
-                    <a href="https://instagram.com/{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    {% endif %}
-                    {% if site.social.facebook %}
-                    <a href="https://facebook.com/{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    {% endif %}
-                </div>
-                <p class="copyright">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
-            </div>
+    <footer class="site-footer">
+        <div class="container">
+            {% include footer.html %}
         </div>
     </footer>
 </body>
