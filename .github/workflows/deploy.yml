@@ -13,19 +13,24 @@ jobs:
     permissions:
       contents: write
       pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Set up Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.0'
           bundler-cache: true
       
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -35,33 +40,50 @@ jobs:
         run: |
           npm ci
           bundle install
+        env:
+          BUNDLE_DEPLOYMENT: true
+      
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
       
       - name: Build Storybook
-        run: npm run build-storybook
-      
-      - name: Copy Storybook to Jekyll
         run: |
-          mkdir -p _site/storybook
-          cp -r storybook-static/* _site/storybook/
+          echo "Building Storybook..."
+          npm run build-storybook
+          echo "Storybook build complete"
+          ls -la storybook-static/
       
       - name: Build Jekyll
+        run: |
+          echo "Building Jekyll site..."
+          JEKYLL_ENV=production bundle exec jekyll build
+          echo "Jekyll build complete"
+          ls -la _site/
         env:
-          JEKYLL_ENV: production
-        run: bundle exec jekyll build
+          JEKYLL_PAT: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Copy Storybook to Jekyll site
+        run: |
+          echo "Copying Storybook to Jekyll _site..."
+          mkdir -p _site/storybook
+          cp -r storybook-static/* _site/storybook/
+          echo "Copy complete"
+          ls -la _site/storybook/
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '_site'
       
       - name: Deploy to GitHub Pages
+        id: deployment
         if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/deploy-pages@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-          publish_branch: gh-pages
-          keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: '${{ github.event.head_commit.message }}'
-          full_commit_message: |
-            Deploy Jekyll + Storybook
-            
-            From commit: ${{ github.sha }}
-            Workflow: ${{ github.workflow }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deployment Status
+        run: |
+          echo "Deployment completed"
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"
