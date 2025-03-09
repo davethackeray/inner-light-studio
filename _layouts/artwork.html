@@ -1,0 +1,75 @@
+---
+layout: default
+---
+<article class="artwork">
+  <div class="artwork__header">
+    <h1 class="artwork__title">{{ page.title }}</h1>
+    {% if page.excerpt %}
+    <p class="artwork__excerpt">{{ page.excerpt }}</p>
+    {% endif %}
+  </div>
+
+  <div class="artwork__gallery">
+    {% if page.images %}
+    <div class="enhanced-gallery" data-images='{{ page.images | jsonify }}'>
+      <!-- EnhancedGallery component will be mounted here -->
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="artwork__details">
+    <div class="artwork__meta">
+      <div class="artwork__info">
+        <p><strong>Medium:</strong> {{ page.medium }}</p>
+        <p><strong>Dimensions:</strong> {{ page.dimensions }}</p>
+        <p><strong>Price:</strong> {{ page.price }}</p>
+        <p><strong>Status:</strong> {{ page.status }}</p>
+      </div>
+      
+      {% if page.tags %}
+      <div class="artwork__tags">
+        {% for category in page.tags %}
+        <div class="tag-group">
+          <h4 class="tag-group__title">{{ category[0] | capitalize }}</h4>
+          <div class="tag-group__items">
+            {% for tag in category[1] %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="artwork__content">
+      {{ content }}
+    </div>
+
+    {% if page.relationships %}
+    <div class="artwork__related">
+      <div class="related-content" data-relationships='{{ page.relationships | jsonify }}'>
+        <!-- RelatedContent component will be mounted here -->
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</article>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EnhancedGallery if present
+    const galleryEl = document.querySelector('.enhanced-gallery');
+    if (galleryEl) {
+      const images = JSON.parse(galleryEl.dataset.images);
+      new EnhancedGallery({ target: galleryEl, props: { images } });
+    }
+
+    // Initialize RelatedContent if present
+    const relatedEl = document.querySelector('.related-content');
+    if (relatedEl) {
+      const relationships = JSON.parse(relatedEl.dataset.relationships);
+      new RelatedContent({ target: relatedEl, props: { relationships } });
+    }
+  });
+</script>

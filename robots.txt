@@ -1,0 +1,17 @@
+# www.robotstxt.org
+
+User-agent: *
+Allow: /
+Allow: /movement/
+Allow: /art/
+Allow: /spiritual/
+Allow: /sitemap.xml
+
+Disallow: /assets/
+Disallow: /src/
+Disallow: /_site/
+Disallow: /_sass/
+Disallow: /_layouts/
+Disallow: /_includes/
+
+Sitemap: https://innerlightstudio.com/sitemap.xml

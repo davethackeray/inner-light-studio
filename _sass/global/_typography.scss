@@ -1,0 +1,95 @@
+// Import variables
+@use "../variables" as *;
+
+/* Typography */
+body {
+    font-family: $font-family-sans;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    color: $text-color;
+}
+
+h1 {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-lg;
+}
+
+h2 {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
+}
+
+h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+}
+
+p {
+    margin-bottom: $spacing-md;
+}
+
+.text-sm {
+    font-size: $font-size-sm;
+}
+
+.text-lg {
+    font-size: $font-size-lg;
+}
+
+.text-xl {
+    font-size: $font-size-xl;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-light {
+    color: $text-color-light;
+}
+
+.text-dark {
+    color: $text-color-dark;
+}
+
+.text-primary {
+    color: $color-primary;
+}
+
+.text-secondary {
+    color: $color-secondary;
+}
+
+// Font Weights
+.font-normal {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+// Line Heights
+.leading-none {
+    line-height: 1;
+}
+
+.leading-tight {
+    line-height: 1.25;
+}
+
+.leading-normal {
+    line-height: 1.5;
+}
+
+.leading-loose {
+    line-height: 2;
+}

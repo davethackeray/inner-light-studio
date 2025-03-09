@@ -1,0 +1,88 @@
+---
+layout: default
+---
+<article class="workshop">
+  <div class="workshop__header">
+    <h1 class="workshop__title">{{ page.title }}</h1>
+    {% if page.excerpt %}
+    <p class="workshop__excerpt">{{ page.excerpt }}</p>
+    {% endif %}
+  </div>
+
+  <div class="workshop__content">
+    <div class="workshop__main">
+      {% if page.image %}
+      <div class="workshop__featured-image">
+        <img src="{{ page.image }}" alt="{{ page.title }}" />
+      </div>
+      {% endif %}
+
+      <div class="workshop__description">
+        {{ content }}
+      </div>
+    </div>
+
+    <aside class="workshop__sidebar">
+      <div class="workshop__booking">
+        <div class="workshop__meta">
+          <p><strong>Duration:</strong> {{ page.duration }}</p>
+          <p><strong>Level:</strong> {{ page.level }}</p>
+          <p><strong>Schedule:</strong> {{ page.schedule }}</p>
+          <p><strong>Location:</strong> {{ page.location }}</p>
+          <p><strong>Price:</strong> {{ page.price }}</p>
+        </div>
+
+        {% if page.registration_link %}
+        <a href="{{ page.registration_link }}" class="arty-button" data-variant="primary">
+          Register Now
+        </a>
+        {% endif %}
+
+        {% if page.tags %}
+        <div class="workshop__tags">
+          {% for category in page.tags %}
+          <div class="tag-group">
+            <h4 class="tag-group__title">{{ category[0] | capitalize }}</h4>
+            <div class="tag-group__items">
+              {% for tag in category[1] %}
+              <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if page.relationships %}
+      <div class="workshop__related">
+        <div class="related-content" data-relationships='{{ page.relationships | jsonify }}'>
+          <!-- RelatedContent component will be mounted here -->
+        </div>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize ArtyButton if present
+    const buttonEls = document.querySelectorAll('.arty-button');
+    buttonEls.forEach(el => {
+      new ArtyButton({ 
+        target: el,
+        props: { 
+          variant: el.dataset.variant || 'default'
+        } 
+      });
+    });
+
+    // Initialize RelatedContent if present
+    const relatedEl = document.querySelector('.related-content');
+    if (relatedEl) {
+      const relationships = JSON.parse(relatedEl.dataset.relationships);
+      new RelatedContent({ target: relatedEl, props: { relationships } });
+    }
+  });
+</script>

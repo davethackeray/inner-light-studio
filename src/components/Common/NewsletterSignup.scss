@@ -1,0 +1,134 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mix;
+
+.newsletter-signup {
+  padding: $spacing-xl;
+  background: color.adjust($color-background-light, $alpha: -0.5);
+  border-radius: $border-radius-lg;
+  border: 1px solid color.adjust($color-border, $alpha: -0.9);
+  @include mix.fade-in;
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    font-size: $font-size-2xl;
+    color: $color-heading;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    color: $color-text-light;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  &__form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  &__input-group {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-sm;
+
+    @include mix.responsive(md) {
+      flex-direction: column;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: $spacing-sm $spacing-md;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    color: $color-text;
+    background: $color-background;
+    border: 1px solid $color-border;
+    border-radius: $border-radius-md;
+    transition: $transition-base;
+
+    &:focus {
+      @include mix.focus-outline;
+      border-color: $color-primary;
+    }
+
+    &::placeholder {
+      color: $color-text-light;
+    }
+  }
+
+  &__submit {
+    padding: $spacing-sm $spacing-lg;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    font-weight: 500;
+    color: $color-background;
+    background: $color-primary;
+    border: none;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $transition-base;
+    @include mix.flex-center;
+    gap: $spacing-xs;
+
+    &:hover {
+      background: color.adjust($color-primary, $lightness: -10%);
+    }
+
+    &:focus {
+      @include mix.focus-outline;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &--loading {
+      opacity: 0.7;
+      cursor: wait;
+    }
+  }
+
+  &__privacy {
+    text-align: center;
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    margin-top: $spacing-md;
+
+    a {
+      color: $color-primary;
+      text-decoration: underline;
+      transition: $transition-base;
+
+      &:hover {
+        color: color.adjust($color-primary, $lightness: -10%);
+      }
+    }
+  }
+
+  // Success state
+  &--success {
+    text-align: center;
+    padding: $spacing-2xl $spacing-xl;
+
+    .newsletter-signup__title {
+      color: $color-success;
+    }
+  }
+
+  // Error state
+  &__error {
+    color: $color-danger;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+  }
+}

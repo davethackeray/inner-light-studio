@@ -1,0 +1,10 @@
+@use "sass:color";
+@use "sass:map";
+
+// Import and forward variables
+@forward './variables';
+@use './variables' as *;
+
+// Import and forward mixins
+@forward './mixins';
+@use './mixins' as mix;

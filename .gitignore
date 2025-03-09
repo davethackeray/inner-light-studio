@@ -1,0 +1,52 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+storybook-static/
+
+# Build
+dist/
+assets/dist/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temp files
+*.log
+*.tmp
+*~
+
+# Dependencies
+/.bundle/
+/vendor/bundle/
+.yarn-integrity
+
+# Cache
+.eslintcache
+.stylelintcache

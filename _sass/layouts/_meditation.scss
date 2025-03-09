@@ -1,0 +1,114 @@
+// Import variables
+@use "../variables" as *;
+
+// Meditation Page Layout
+.meditation-layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: $spacing-xl 0;
+
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+    }
+
+    &__title {
+        font-family: $font-family-serif;
+        font-size: $font-size-xxl;
+        color: $text-color;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__meta {
+        color: $text-color-light;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-lg;
+    }
+
+    &__content {
+        font-family: $font-family-sans;
+        font-size: $font-size-lg;
+        line-height: 1.8;
+        color: $text-color;
+        margin-bottom: $spacing-xl;
+
+        p {
+            margin-bottom: $spacing-lg;
+        }
+
+        blockquote {
+            margin: $spacing-xl 0;
+            padding: $spacing-lg;
+            background: $background-color-alt;
+            border-left: 4px solid $color-primary;
+            font-family: $font-family-serif;
+            font-size: $font-size-xl;
+            color: $text-color;
+            
+            p {
+                margin: 0;
+            }
+        }
+    }
+
+    &__media {
+        margin: $spacing-xl 0;
+
+        audio {
+            width: 100%;
+            margin-bottom: $spacing-md;
+        }
+
+        .caption {
+            text-align: center;
+            color: $text-color-light;
+            font-size: $font-size-sm;
+        }
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-sm;
+        margin-top: $spacing-xl;
+
+        .tag {
+            background: $background-color-alt;
+            color: $text-color;
+            padding: $spacing-xs $spacing-sm;
+            border-radius: 20px;
+            font-size: $font-size-sm;
+            transition: $transition-base;
+
+            &:hover {
+                background: $color-primary;
+                color: white;
+            }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: $breakpoint-md) {
+    .meditation-layout {
+        padding: $spacing-lg $spacing-md;
+
+        &__title {
+            font-size: $font-size-xl;
+        }
+
+        &__meta {
+            font-size: $font-size-base;
+        }
+
+        &__content {
+            font-size: $font-size-base;
+
+            blockquote {
+                font-size: $font-size-lg;
+                padding: $spacing-md;
+                margin: $spacing-lg 0;
+            }
+        }
+    }
+}

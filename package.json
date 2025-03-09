@@ -1,0 +1,79 @@
+{
+  "name": "inner-light-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for Inner Light Studio featuring movement, art, and spiritual practices",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.26.9",
+    "prop-types": "^15.8.1",
+    "react-icons": "^4.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/plugin-transform-runtime": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@chromatic-com/storybook": "^3.2.5",
+    "@storybook/addon-actions": "^8.6.4",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-interactions": "^8.6.4",
+    "@storybook/addon-links": "^8.6.4",
+    "@storybook/addon-onboarding": "^8.6.4",
+    "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/cli": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/react-webpack5": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^14.3.1",
+    "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^6.11.0",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "^7.32.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.11.4",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
+    "prettier": "^2.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-test-renderer": "^18.3.1",
+    "sass": "^1.85.1",
+    "sass-loader": "^13.3.3",
+    "storybook": "^8.6.4",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
+}

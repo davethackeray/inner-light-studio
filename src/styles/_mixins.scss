@@ -1,0 +1,127 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+// Flexbox utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Typography
+@mixin heading-1 {
+  font-family: $font-secondary;
+  font-size: $font-size-2xl;
+  font-weight: 500;
+  color: $color-heading;
+  line-height: 1.2;
+  margin-bottom: $spacing-lg;
+}
+
+@mixin heading-2 {
+  font-family: $font-secondary;
+  font-size: $font-size-xl;
+  font-weight: 500;
+  color: $color-heading;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+}
+
+@mixin heading-3 {
+  font-family: $font-secondary;
+  font-size: $font-size-lg;
+  font-weight: 500;
+  color: $color-heading;
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+}
+
+@mixin body-text {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+@mixin tag {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  background: rgba($color-primary, 0.1);
+  color: $color-primary;
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba($color-primary, 0.2);
+  }
+}
+
+@mixin tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Animation utilities
+@mixin fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin hover-lift {
+  transition: $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// Focus styles
+@mixin focus-outline {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.4);
+  }
+}
+
+// Responsive breakpoints
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}

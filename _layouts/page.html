@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<article class="page">
+    <header class="page-header">
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="lead">{{ page.description }}</p>
+        {% endif %}
+    </header>
+
+    <div class="page-content">
+        {{ content }}
+    </div>
+
+    {% if page.sections %}
+    <section class="sections">
+        <div class="grid">
+            {% for section in page.sections %}
+            <div class="card">
+                <h3>{{ section.title }}</h3>
+                <p>{{ section.description }}</p>
+                {% if section.link %}
+                <a href="{{ section.link | relative_url }}">Learn more →</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</article>

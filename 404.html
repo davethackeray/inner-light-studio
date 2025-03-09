@@ -1,0 +1,34 @@
+---
+layout: default
+title: Page Not Found
+permalink: /404.html
+---
+<div class="error-page">
+    <h1>404</h1>
+    <p class="lead">Sorry, we couldn't find the page you're looking for.</p>
+    
+    <div class="error-content">
+        <p>You might want to check out these sections instead:</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Movement</h3>
+                <p>Explore mindful movement practices and dance workshops.</p>
+                <a href="{{ '/movement/' | relative_url }}">Visit Movement →</a>
+            </div>
+            <div class="card">
+                <h3>Art</h3>
+                <p>Discover our art gallery and creative expressions.</p>
+                <a href="{{ '/art/' | relative_url }}">Visit Art →</a>
+            </div>
+            <div class="card">
+                <h3>Spiritual</h3>
+                <p>Experience meditation and mindfulness practices.</p>
+                <a href="{{ '/spiritual/' | relative_url }}">Visit Spiritual →</a>
+            </div>
+        </div>
+        
+        <div class="back-home">
+            <a href="{{ '/' | relative_url }}" class="button">Return to Homepage</a>
+        </div>
+    </div>
+</div>

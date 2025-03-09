@@ -1,0 +1,114 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mix;
+
+.arty-gallery {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 3), 1fr);
+  gap: var(--gap, 1rem);
+  width: 100%;
+  padding: $spacing-md;
+
+  &__item {
+    position: relative;
+    aspect-ratio: 1;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: rgba($color-primary, 0.05);
+    transition: transform $transition-medium;
+
+    @include mix.hover-lift;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, $color-primary, $color-tertiary);
+      opacity: 0;
+      transition: opacity $transition-medium;
+      z-index: 1;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0.2;
+      }
+
+      .arty-gallery__overlay {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: $spacing-md;
+    background: linear-gradient(
+      transparent,
+      rgba($color-background, 0.9) 30%
+    );
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all $transition-medium;
+    z-index: 2;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: 1.25rem;
+    color: $color-text;
+    margin: 0 0 $spacing-xs;
+    line-height: 1.2;
+  }
+
+  &__description {
+    font-family: $font-secondary;
+    font-size: 0.875rem;
+    color: rgba($color-text, 0.8);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  // Responsive adjustments
+  @include mix.responsive(lg) {
+    --columns: 2;
+  }
+
+  @include mix.responsive(sm) {
+    --columns: 1;
+    padding: $spacing-sm;
+  }
+
+  // Loading animation
+  &__item.loading {
+    animation: shimmer 1.5s infinite linear;
+    background: linear-gradient(
+      90deg,
+      rgba($color-primary, 0.05) 0%,
+      rgba($color-primary, 0.1) 50%,
+      rgba($color-primary, 0.05) 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

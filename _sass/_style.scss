@@ -1,0 +1,70 @@
+// Variables
+$font-family: -apple-system, system-ui, sans-serif;
+$color-primary: #4A90E2;
+$color-text: #333;
+$color-text-light: #666;
+$border-color: #eee;
+$bg-light: #f8f8f8;
+
+// Base styles
+body {
+  font-family: $font-family;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  color: $color-text;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Header
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid $border-color;
+  padding: 1rem 0;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-text;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+// Main content
+main {
+  padding: 2rem 0;
+}
+
+// Footer
+footer {
+  background: $bg-light;
+  padding: 2rem 0;
+  text-align: center;
+  color: $color-text-light;
+}

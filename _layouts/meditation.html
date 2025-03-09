@@ -1,0 +1,100 @@
+---
+layout: default
+---
+<article class="meditation">
+  <div class="meditation__header">
+    <h1 class="meditation__title">{{ page.title }}</h1>
+    {% if page.excerpt %}
+    <p class="meditation__excerpt">{{ page.excerpt }}</p>
+    {% endif %}
+  </div>
+
+  <div class="meditation__content">
+    <div class="meditation__main">
+      {% if page.featured_image %}
+      <div class="meditation__featured-image">
+        <img src="{{ page.featured_image }}" alt="{{ page.title }}" />
+      </div>
+      {% endif %}
+
+      {% if page.audio %}
+      <div class="meditation__player">
+        <div class="media-player" data-audio="{{ page.audio }}" data-title="{{ page.title }}">
+          <!-- MediaPlayer component will be mounted here -->
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="meditation__description">
+        {{ content }}
+      </div>
+
+      {% if page.gallery %}
+      <div class="meditation__gallery">
+        <div class="enhanced-gallery" data-images='{{ page.gallery | jsonify }}'>
+          <!-- EnhancedGallery component will be mounted here -->
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <aside class="meditation__sidebar">
+      <div class="meditation__meta">
+        <div class="meditation__info">
+          <p><strong>Duration:</strong> {{ page.duration }}</p>
+          <p><strong>Type:</strong> {{ page.type }}</p>
+          <p><strong>Level:</strong> {{ page.level }}</p>
+        </div>
+
+        {% if page.tags %}
+        <div class="meditation__tags">
+          {% for category in page.tags %}
+          <div class="tag-group">
+            <h4 class="tag-group__title">{{ category[0] | capitalize }}</h4>
+            <div class="tag-group__items">
+              {% for tag in category[1] %}
+              <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if page.relationships %}
+      <div class="meditation__related">
+        <div class="related-content" data-relationships='{{ page.relationships | jsonify }}'>
+          <!-- RelatedContent component will be mounted here -->
+        </div>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MediaPlayer if present
+    const playerEl = document.querySelector('.media-player');
+    if (playerEl) {
+      const audio = playerEl.dataset.audio;
+      const title = playerEl.dataset.title;
+      new MediaPlayer({ target: playerEl, props: { audio, title } });
+    }
+
+    // Initialize EnhancedGallery if present
+    const galleryEl = document.querySelector('.enhanced-gallery');
+    if (galleryEl) {
+      const images = JSON.parse(galleryEl.dataset.images);
+      new EnhancedGallery({ target: galleryEl, props: { images } });
+    }
+
+    // Initialize RelatedContent if present
+    const relatedEl = document.querySelector('.related-content');
+    if (relatedEl) {
+      const relationships = JSON.parse(relatedEl.dataset.relationships);
+      new RelatedContent({ target: relatedEl, props: { relationships } });
+    }
+  });
+</script>

@@ -1,0 +1,139 @@
+// Art Gallery Layout
+.art-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    padding: $spacing-lg 0;
+}
+
+.artwork-card {
+    background: $background-color;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: $transition-base;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    &__image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    &__content {
+        padding: $spacing-md;
+    }
+
+    &__title {
+        font-family: $font-family-serif;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-sm;
+        color: $text-color;
+    }
+
+    &__meta {
+        font-size: $font-size-sm;
+        color: $text-color-light;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__description {
+        margin-bottom: $spacing-md;
+        color: $text-color;
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-xs;
+    }
+
+    &__tag {
+        font-size: $font-size-sm;
+        padding: $spacing-xs $spacing-sm;
+        background: $background-color-alt;
+        border-radius: 20px;
+        color: $text-color-light;
+    }
+}
+
+// Single Artwork Page
+.artwork {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: $spacing-xl 0;
+
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+    }
+
+    &__title {
+        font-family: $font-family-serif;
+        font-size: $font-size-xxl;
+        margin-bottom: $spacing-sm;
+        color: $text-color;
+    }
+
+    &__meta {
+        font-size: $font-size-lg;
+        color: $text-color-light;
+    }
+
+    &__gallery {
+        margin-bottom: $spacing-xl;
+    }
+
+    &__description {
+        font-size: $font-size-lg;
+        line-height: 1.8;
+        margin-bottom: $spacing-xl;
+    }
+
+    &__details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-lg;
+        padding: $spacing-lg;
+        background: $background-color-alt;
+        border-radius: 4px;
+
+        dt {
+            font-weight: 500;
+            color: $text-color-light;
+            margin-bottom: $spacing-xs;
+        }
+
+        dd {
+            margin: 0 0 $spacing-md 0;
+            color: $text-color;
+        }
+    }
+}
+
+// Responsive
+@media (max-width: $breakpoint-md) {
+    .art-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .artwork {
+        padding: $spacing-lg $spacing-md;
+
+        &__title {
+            font-size: $font-size-xl;
+        }
+
+        &__meta {
+            font-size: $font-size-base;
+        }
+
+        &__description {
+            font-size: $font-size-base;
+        }
+    }
+}

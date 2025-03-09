@@ -1,0 +1,47 @@
+// Import variables
+@use "../variables" as *;
+
+/* Base Styles */
+html {
+    font-family: $font-family-sans;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    color: $text-color;
+    background-color: $background-color;
+}
+
+/* Links */
+a {
+    color: $color-primary;
+    transition: $transition-base;
+
+    &:hover {
+        color: $color-primary-dark;
+    }
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $container-padding;
+}
+
+/* Sections */
+section {
+    padding: $spacing-xl 0;
+}

@@ -1,0 +1,30 @@
+<!-- Navigation Header -->
+<header class="site-header">
+    <div class="container">
+        <nav class="main-nav">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <span class="logo__text">{{ site.title }}</span>
+            </a>
+
+            <!-- Main Navigation -->
+            <ul class="nav-links">
+                <li><a href="/art" {% if page.url contains 'art' %}class="active"{% endif %}>Art</a></li>
+                <li><a href="/movement" {% if page.url contains 'movement' %}class="active"{% endif %}>Movement</a></li>
+                <li><a href="/spiritual" {% if page.url contains 'spiritual' %}class="active"{% endif %}>Spiritual</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Page Header -->
+{% if page.title and layout.show_title != false %}
+<div class="page-header">
+    <div class="container">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="page-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
