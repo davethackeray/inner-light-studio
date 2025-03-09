@@ -1,0 +1,87 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:color';
+
+.site-footer {
+  background-color: $color-footer-bg;
+  padding: $spacing-xl 0;
+  margin-top: $spacing-xl;
+
+  &__container {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $spacing-lg;
+    
+    @include breakpoint-up('md') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__section {
+    h4 {
+      font-size: 1.25rem;
+      margin-bottom: $spacing-md;
+      color: color.adjust($color-text, $lightness: -15%);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: $spacing-sm;
+    }
+
+    a {
+      color: color.adjust($color-text, $lightness: 15%);
+      text-decoration: none;
+
+      @include hover-transition {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: $spacing-xl;
+    padding-top: $spacing-lg;
+    border-top: 1px solid color.adjust($color-text, $alpha: -0.9);
+    text-align: center;
+    color: color.adjust($color-text, $lightness: 25%);
+    font-size: 0.875rem;
+
+    p {
+      margin-bottom: $spacing-sm;
+    }
+
+    a {
+      color: $color-primary;
+      text-decoration: none;
+
+      @include hover-transition {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    margin-top: $spacing-md;
+
+    a {
+      color: color.adjust($color-text, $lightness: 15%);
+      font-size: 1.5rem;
+
+      @include hover-transition {
+        color: $color-primary;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

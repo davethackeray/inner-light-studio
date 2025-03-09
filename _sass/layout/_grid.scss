@@ -1,0 +1,87 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Container
+.container {
+  @include container;
+}
+
+// Grid system
+.grid {
+  display: grid;
+  gap: $spacing-md;
+  
+  // Common grid patterns
+  &--2-cols {
+    grid-template-columns: 1fr;
+    
+    @include breakpoint-up('md') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &--3-cols {
+    grid-template-columns: 1fr;
+    
+    @include breakpoint-up('md') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include breakpoint-up('lg') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &--4-cols {
+    grid-template-columns: 1fr;
+    
+    @include breakpoint-up('sm') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include breakpoint-up('lg') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+// Flex utilities
+.flex {
+  display: flex;
+  
+  &--center {
+    @include flex-center;
+  }
+  
+  &--between {
+    @include flex-between;
+  }
+  
+  &--wrap {
+    flex-wrap: wrap;
+  }
+  
+  &--column {
+    flex-direction: column;
+  }
+}
+
+// Spacing utilities
+.gap {
+  &--sm { gap: $spacing-sm; }
+  &--md { gap: $spacing-md; }
+  &--lg { gap: $spacing-lg; }
+}
+
+// Section
+.section {
+  @include section-spacing;
+  
+  &--light {
+    background-color: $color-background;
+  }
+  
+  &--dark {
+    background-color: $color-footer-bg;
+  }
+}

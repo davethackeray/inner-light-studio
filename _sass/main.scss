@@ -1,12 +1,14 @@
-body {
-  font-family: -apple-system, system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-}
+// Abstracts
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+// Base styles
+@use 'base/reset';
+@use 'base/typography';
+
+// Layout
+@use 'layout/grid';
+@use 'layout/header';
+@use 'layout/footer';
+
+// Components will be added here as we migrate them

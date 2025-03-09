@@ -1,0 +1,58 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+// Media query mixins
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get((
+    'sm': $breakpoint-sm,
+    'md': $breakpoint-md,
+    'lg': $breakpoint-lg,
+    'xl': $breakpoint-xl
+  ), $size)) {
+    @content;
+  }
+}
+
+// Container
+@mixin container {
+  width: 100%;
+  max-width: $container-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+// Flexbox utils
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Typography
+@mixin heading {
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+}
+
+// Interactive elements
+@mixin hover-transition {
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    @content;
+  }
+}
+
+// Layout
+@mixin section-spacing {
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xl;
+}

@@ -1,0 +1,114 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.site-header {
+  background-color: $color-primary;
+  padding: $spacing-md 0;
+  color: $color-background;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &__container {
+    @include container;
+    @include flex-between;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $color-background;
+    text-decoration: none;
+
+    @include hover-transition {
+      color: color.adjust($color-background, $alpha: -0.2);
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include breakpoint-up('md') {
+      display: block;
+    }
+
+    ul {
+      @include flex-center;
+      gap: $spacing-lg;
+    }
+
+    a {
+      color: $color-background;
+      text-decoration: none;
+      font-weight: 500;
+
+      @include hover-transition {
+        color: color.adjust($color-background, $alpha: -0.2);
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__mobile-menu {
+    @include breakpoint-up('md') {
+      display: none;
+    }
+
+    button {
+      color: $color-background;
+      font-size: 1.5rem;
+      padding: $spacing-xs;
+    }
+  }
+}
+
+// Mobile navigation when active
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-primary;
+  padding: $spacing-xl;
+  z-index: 1000;
+
+  &.is-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    color: $color-background;
+    font-size: 1.5rem;
+  }
+
+  ul {
+    text-align: center;
+  }
+
+  li {
+    margin-bottom: $spacing-lg;
+  }
+
+  a {
+    color: $color-background;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    &.active {
+      text-decoration: underline;
+    }
+  }
+
+  @include breakpoint-up('md') {
+    display: none !important;
+  }
+}
