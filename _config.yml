@@ -1,107 +1,33 @@
+
 title: Inner Light Studio
-description: Discover the perfect harmony of movement, art, and spiritual practice at Inner Light Studio. Experience transformative workshops, meditations, and creative expressions.
-author: Inner Light Studio Team
-
-# Build settings
-url: ""
-baseurl: ""
-timezone: UTC
-
-# Social media
-social:
-  instagram: innerlightstudio
-  facebook: innerlightstudio
+description: Art, Movement & Meditation Space
+baseurl: "/inner-light-studio"
+url: "https://davethackeray.github.io"
 
 # Collections
 collections:
-  meditations:
-    output: true
-    permalink: /spiritual/:title/
   artworks:
     output: true
     permalink: /art/:title/
+  meditations:
+    output: true
+    permalink: /spiritual/:title/
   workshops:
     output: true
     permalink: /movement/:title/
-  pages:
-    output: true
-    permalink: /:title/
 
-# Plugins
+# Build settings
+markdown: kramdown
 plugins:
+  - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-sitemap
 
-# Content Relationships
-tag_categories:
-  themes:
-    - movement
-    - meditation
-    - nature
-    - light
-    - flow
-    - energy
-    - mindfulness
-    - expression
-  techniques:
-    - dance
-    - contemporary
-    - somatic
-    - visualization
-    - breathwork
-    - mixed-media
-    - painting
-  elements:
-    - body
-    - mind
-    - spirit
-    - rhythm
-    - texture
-    - form
-    - space
-    - time
-  emotions:
-    - peace
-    - joy
-    - creativity
-    - harmony
-    - transformation
-    - balance
-    - inspiration
-
-# Cross-section content settings
-content_relationships:
-  enable_related_content: true
-  max_related_items: 3
-  relationship_types:
-    - thematic      # Items sharing similar themes
-    - inspirational # Items that inspired each other
-    - complementary # Items that work well together
-    - sequential    # Items that follow a progression
-
-# Default settings
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-      tags: []
-      relationships: []
-  - scope:
-      path: ""
-      type: "meditations"
-    values:
-      layout: "meditation"
-  - scope:
-      path: ""
-      type: "artworks"
-    values:
-      layout: "artwork"
-  - scope:
-      path: ""
-      type: "workshops"
-    values:
-      layout: "workshop"
+# Sass processing
+sass:
+  style: compressed
+  load_paths:
+    - _sass
+    - node_modules
 
 # Exclude from processing
 exclude:
@@ -109,12 +35,11 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
-  - .gitignore
+  - .git
+  - .github
+  - README.md
   - package.json
   - package-lock.json
-  - webpack.config.js
   - src
-  - .babelrc
   - .storybook
-  - README.md
-  - .specstory
+  - memory-bank
